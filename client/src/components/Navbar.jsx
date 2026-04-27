@@ -21,10 +21,10 @@ const Navbar = ({ actions }) => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className={`text-sm font-medium ${location.pathname === '/' ? 'text-primary-600' : 'text-slate-600 hover:text-primary-600'} transition`}>
+          <Link to="/" className={`text-sm font-bold ${location.pathname === '/' ? 'text-primary-600' : 'text-slate-600 hover:text-primary-600'} transition`}>
             Home
           </Link>
-          <a href="#features" className="text-sm font-medium text-slate-600 hover:text-primary-600 transition">
+          <a href="#features" className="text-sm font-bold text-slate-600 hover:text-primary-600 transition">
             Features
           </a>
           <div className="flex items-center gap-3">
@@ -32,7 +32,7 @@ const Navbar = ({ actions }) => {
             {!isBuilder && (
               <Link 
                 to="/builder" 
-                className="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-semibold rounded-full transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-bold rounded-full transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
               >
                 Build My Resume
               </Link>
@@ -54,14 +54,14 @@ const Navbar = ({ actions }) => {
         <div className="md:hidden pt-4 pb-2 space-y-2 animate-in fade-in slide-in-from-top-4 duration-300">
           <Link 
             to="/" 
-            className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
+            className="block px-4 py-2 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
             onClick={() => setIsOpen(false)}
           >
             Home
           </Link>
           <a 
             href="#features" 
-            className="block px-4 py-2 text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
+            className="block px-4 py-2 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
             onClick={() => setIsOpen(false)}
           >
             Features
@@ -72,7 +72,7 @@ const Navbar = ({ actions }) => {
           {!isBuilder && (
             <Link 
               to="/builder" 
-              className="block px-4 py-2 text-base font-semibold text-primary-600 hover:bg-primary-50 rounded-md"
+              className="block px-4 py-2 text-base font-bold text-primary-600 hover:bg-primary-50 rounded-md"
               onClick={() => setIsOpen(false)}
             >
               Build My Resume
