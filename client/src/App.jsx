@@ -1,12 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import Builder from './pages/Builder';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/builder" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/builder" element={<Builder />} />
       </Routes>
     </Router>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import Navbar from '../components/Navbar';
 import ResumeForm from '../components/ResumeForm';
 import ResumePreview from '../components/ResumePreview';
 import { ResumeProvider } from '../context/ResumeContext';
-import { Download, Sparkles, Loader2 } from 'lucide-react';
+import { Download, Loader2 } from 'lucide-react';
 
 const BuilderContent = () => {
   const [isExporting, setIsExporting] = useState(false);
@@ -11,7 +12,6 @@ const BuilderContent = () => {
     try {
       setIsExporting(true);
       
-      // Get the HTML content of the resume preview
       const previewElement = document.getElementById('resume-preview-content');
       if (!previewElement) {
         alert("Preview not found");
@@ -20,7 +20,6 @@ const BuilderContent = () => {
       
       const htmlContent = previewElement.outerHTML;
       
-      // Call the backend API
       const response = await fetch('http://localhost:5000/api/saas/generate-pdf', {
         method: 'POST',
         headers: {
@@ -33,10 +32,8 @@ const BuilderContent = () => {
         throw new Error('Failed to generate PDF');
       }
       
-      // Convert response to blob
       const blob = await response.blob();
       
-      // Create download link and trigger it
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -54,27 +51,20 @@ const BuilderContent = () => {
     }
   };
 
+  const exportAction = (
+    <button 
+      onClick={handleExportPDF}
+      disabled={isExporting}
+      className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-lg transition shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
+    >
+      {isExporting ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
+      {isExporting ? 'Exporting...' : 'Export PDF'}
+    </button>
+  );
+
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col">
-      {/* Navbar */}
-      <nav className="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center shadow-sm z-10">
-        <div className="flex items-center gap-2">
-          <div className="bg-primary-600 p-2 rounded-lg">
-            <Sparkles className="text-white" size={20} />
-          </div>
-          <h1 className="text-xl font-bold text-slate-800 tracking-tight">CareerForge <span className="text-primary-600">Pro</span></h1>
-        </div>
-        <div className="flex gap-3">
-          <button 
-            onClick={handleExportPDF}
-            disabled={isExporting}
-            className="flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-lg transition shadow-sm disabled:opacity-70 disabled:cursor-not-allowed"
-          >
-            {isExporting ? <Loader2 size={16} className="animate-spin" /> : <Download size={16} />}
-            {isExporting ? 'Exporting...' : 'Export PDF'}
-          </button>
-        </div>
-      </nav>
+      <Navbar actions={exportAction} />
 
       {/* Main Content: Split Screen */}
       <main className="flex-1 overflow-hidden flex flex-col lg:flex-row">
