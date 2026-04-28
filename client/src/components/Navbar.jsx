@@ -8,33 +8,33 @@ const Navbar = ({ actions }) => {
   const isBuilder = location.pathname === '/builder';
 
   return (
-    <nav className="bg-white border-b border-slate-200 px-6 py-4 sticky top-0 z-50 shadow-sm">
+    <nav className="bg-[#fafafa]/80 backdrop-blur-md px-6 py-5 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="bg-primary-600 p-2 rounded-lg">
-            <Sparkles className="text-white" size={20} />
+        <Link to="/" className="flex items-center gap-2 group">
+          <div className="bg-slate-900 p-1.5 rounded text-white group-hover:rotate-12 transition-transform">
+            <Sparkles size={16} />
           </div>
-          <h1 className="text-xl font-bold text-slate-800 tracking-tight">
-            CareerForge <span className="text-primary-600">Pro</span>
-          </h1>
+          <span className="text-xl font-serif italic text-slate-900 tracking-tight">
+            CareerForge Pro
+          </span>
         </Link>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link to="/" className={`text-sm font-bold ${location.pathname === '/' ? 'text-primary-600' : 'text-slate-600 hover:text-primary-600'} transition`}>
+        <div className="hidden md:flex items-center gap-10">
+          <Link 
+            to="/" 
+            className={`text-sm font-light tracking-wide ${location.pathname === '/' ? 'text-slate-900 font-medium' : 'text-slate-500 hover:text-slate-900'} transition-colors`}
+          >
             Home
           </Link>
-          <a href="#features" className="text-sm font-bold text-slate-600 hover:text-primary-600 transition">
-            Features
-          </a>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {actions}
             {!isBuilder && (
               <Link 
                 to="/builder" 
-                className="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white text-sm font-bold rounded-full transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+                className="px-6 py-2 bg-slate-900 text-white text-sm font-medium rounded-full hover:bg-slate-800 transition-all"
               >
-                Build My Resume
+                Start Building
               </Link>
             )}
           </div>
@@ -42,42 +42,35 @@ const Navbar = ({ actions }) => {
 
         {/* Mobile Menu Button */}
         <button 
-          className="md:hidden text-slate-600"
+          className="md:hidden text-slate-900"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden pt-4 pb-2 space-y-2 animate-in fade-in slide-in-from-top-4 duration-300">
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-slate-100 p-6 space-y-6 shadow-xl animate-in fade-in slide-in-from-top-4 duration-300">
           <Link 
             to="/" 
-            className="block px-4 py-2 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
+            className="block text-lg font-serif italic text-slate-900"
             onClick={() => setIsOpen(false)}
           >
             Home
           </Link>
-          <a 
-            href="#features" 
-            className="block px-4 py-2 text-base font-bold text-slate-700 hover:bg-slate-50 hover:text-primary-600 rounded-md"
-            onClick={() => setIsOpen(false)}
-          >
-            Features
-          </a>
-          <div className="px-4 py-2">
+          <div className="pt-4 border-t border-slate-50">
             {actions}
+            {!isBuilder && (
+              <Link 
+                to="/builder" 
+                className="block w-full text-center px-6 py-3 bg-slate-900 text-white font-medium rounded-full"
+                onClick={() => setIsOpen(false)}
+              >
+                Start Building
+              </Link>
+            )}
           </div>
-          {!isBuilder && (
-            <Link 
-              to="/builder" 
-              className="block px-4 py-2 text-base font-bold text-primary-600 hover:bg-primary-50 rounded-md"
-              onClick={() => setIsOpen(false)}
-            >
-              Build My Resume
-            </Link>
-          )}
         </div>
       )}
     </nav>
