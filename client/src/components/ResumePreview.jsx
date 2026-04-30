@@ -7,7 +7,7 @@ const ResumePreview = () => {
   const { personalInfo, summary, experience, education, skills, projects } = resumeData;
 
   return (
-    <div className="bg-white h-[842px] w-[595px] mx-auto shadow-xl transform origin-top left-0 overflow-hidden font-sans text-slate-800 flex flex-col p-8" id="resume-preview-content">
+    <div className="bg-white min-h-[297mm] w-[210mm] mx-auto shadow-xl transform origin-top left-0 overflow-hidden font-sans text-slate-800 flex flex-col p-[20mm]" id="resume-preview-content">
       {/* Header */}
       <header className="border-b-2 border-slate-800 pb-4 mb-4">
         <h1 className="text-3xl font-bold uppercase tracking-wider">{personalInfo.firstName} {personalInfo.lastName}</h1>

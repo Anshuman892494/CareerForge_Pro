@@ -42,20 +42,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Minimal Image/Mockup */}
-      <section className="px-6 pb-32">
-        <div className="max-w-5xl mx-auto">
-          <div className="relative p-2 bg-white border border-slate-200 rounded-[2.5rem] shadow-sm">
-            <div className="overflow-hidden rounded-[2rem] border border-slate-100">
-              <img
-                src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=2000"
-                alt="Clean Interface Preview"
-                className="w-full h-auto grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Philosophy / Simple Features */}
       <section id="features" className="py-32 bg-white border-y border-slate-100">
